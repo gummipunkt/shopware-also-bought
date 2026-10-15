@@ -1,0 +1,40 @@
+{
+  "name": "wltr/also-bought",
+  "description": "\"Andere Kunden kauften auch\" – product recommendations from real co-purchases, on the product page and in the cart",
+  "version": "1.0.0",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "WLTR - die digitalagentur"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Wltr\\AlsoBought\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": "~6.7.0",
+    "shopware/storefront": "~6.7.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "Wltr\\AlsoBought\\WltrAlsoBought",
+    "label": {
+      "de-DE": "Andere Kunden kauften auch",
+      "en-GB": "Customers also bought"
+    },
+    "description": {
+      "de-DE": "Zeigt auf der Produktseite und im Warenkorb Produkte, die andere Kunden zusammen mit diesem Produkt gekauft haben. Berechnet aus echten Bestellungen.",
+      "en-GB": "Shows products that other customers bought together with this product, on the product page and in the cart. Calculated from real orders."
+    },
+    "manufacturerLink": {
+      "de-DE": "",
+      "en-GB": ""
+    },
+    "supportLink": {
+      "de-DE": "",
+      "en-GB": ""
+    }
+  }
+}

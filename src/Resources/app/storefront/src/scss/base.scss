@@ -1,0 +1,34 @@
+// "Customers also bought" – layout only; the product cards are the theme's standard listing boxes.
+.wltr-also-bought {
+    margin: 3rem 0 2rem;
+}
+
+.wltr-also-bought__headline {
+    margin-bottom: 1.5rem;
+}
+
+.wltr-also-bought__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+
+    @include media-breakpoint-up(md) {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 2rem;
+    }
+}
+
+.wltr-also-bought__item {
+    min-width: 0;
+
+    .product-box {
+        height: 100%;
+    }
+}
+
+// in the cart the main column is narrower: at most three cards per row
+.wltr-also-bought--cart .wltr-also-bought__grid {
+    @include media-breakpoint-up(lg) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

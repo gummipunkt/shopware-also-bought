@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Display</title>
+        <title lang="de-DE">Anzeige</title>
+
+        <input-field type="bool">
+            <name>showOnProductPage</name>
+            <label>Show on the product page</label>
+            <label lang="de-DE">Auf der Produktseite anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>showInCart</name>
+            <label>Show in the cart</label>
+            <label lang="de-DE">Im Warenkorb anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>maxProducts</name>
+            <label>Number of products</label>
+            <label lang="de-DE">Anzahl Produkte</label>
+            <defaultValue>4</defaultValue>
+            <min>1</min>
+            <max>12</max>
+        </input-field>
+
+        <input-field type="int">
+            <name>minProducts</name>
+            <label>Show only from this many products</label>
+            <label lang="de-DE">Erst ab so vielen Produkten anzeigen</label>
+            <helpText>Avoids a lonely single recommendation.</helpText>
+            <helpText lang="de-DE">Vermeidet eine einzelne, verloren wirkende Empfehlung.</helpText>
+            <defaultValue>2</defaultValue>
+            <min>1</min>
+            <max>12</max>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Calculation</title>
+        <title lang="de-DE">Berechnung</title>
+
+        <input-field type="int">
+            <name>monthsBack</name>
+            <label>Orders of the last months</label>
+            <label lang="de-DE">Bestellungen der letzten Monate</label>
+            <helpText>0 = all orders</helpText>
+            <helpText lang="de-DE">0 = alle Bestellungen</helpText>
+            <defaultValue>36</defaultValue>
+            <min>0</min>
+        </input-field>
+
+        <input-field type="int">
+            <name>minOrders</name>
+            <label>Bought together in at least … orders</label>
+            <label lang="de-DE">Mindestens in … gemeinsamen Bestellungen</label>
+            <defaultValue>1</defaultValue>
+            <min>1</min>
+        </input-field>
+
+        <input-field type="int">
+            <name>storedPerProduct</name>
+            <label>Stored candidates per product</label>
+            <label lang="de-DE">Gespeicherte Kandidaten pro Produkt</label>
+            <helpText>More candidates than displayed, so inactive or sold-out products can be skipped.</helpText>
+            <helpText lang="de-DE">Mehr Kandidaten als angezeigt, damit inaktive oder ausverkaufte Produkte übersprungen werden können.</helpText>
+            <defaultValue>20</defaultValue>
+            <min>1</min>
+            <max>100</max>
+        </input-field>
+    </card>
+</config>

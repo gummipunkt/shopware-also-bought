@@ -1,0 +1,28 @@
+{#
+    "Customers also bought" list.
+    Expects: products (ProductCollection), headline (string), modifier (string, e.g. "product-page" / "cart").
+    The product cards are the shop's standard listing boxes, so they follow the active theme.
+#}
+{% block wltr_also_bought %}
+    {% if products and products|length > 0 %}
+        <section class="wltr-also-bought wltr-also-bought--{{ modifier }}" aria-labelledby="wltr-also-bought-headline-{{ modifier }}">
+            {% block wltr_also_bought_headline %}
+                <h2 class="wltr-also-bought__headline" id="wltr-also-bought-headline-{{ modifier }}">{{ headline }}</h2>
+            {% endblock %}
+
+            {% block wltr_also_bought_grid %}
+                <div class="wltr-also-bought__grid">
+                    {% for product in products %}
+                        <div class="wltr-also-bought__item">
+                            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                product: product,
+                                layout: 'standard',
+                                displayMode: 'standard'
+                            } %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endblock %}
+        </section>
+    {% endif %}
+{% endblock %}

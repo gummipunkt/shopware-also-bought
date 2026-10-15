@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{% block page_checkout_cart_product_table %}
+    {{ parent() }}
+
+    {% block wltr_also_bought_cart %}
+        {% if page.extensions.wltrAlsoBought is defined %}
+            {% sw_include '@WltrAlsoBought/storefront/component/wltr-also-bought/product-list.html.twig' with {
+                products: page.extensions.wltrAlsoBought,
+                headline: 'wltrAlsoBought.cartHeadline'|trans,
+                modifier: 'cart'
+            } %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

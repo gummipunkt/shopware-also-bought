@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/page/content/product-detail.html.twig' %}
+
+{% block cms_content %}
+    {{ parent() }}
+
+    {% block wltr_also_bought_product_page %}
+        {% if page.extensions.wltrAlsoBought is defined %}
+            <div class="container">
+                {% sw_include '@WltrAlsoBought/storefront/component/wltr-also-bought/product-list.html.twig' with {
+                    products: page.extensions.wltrAlsoBought,
+                    headline: 'wltrAlsoBought.headline'|trans,
+                    modifier: 'product-page'
+                } %}
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

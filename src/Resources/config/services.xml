@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- public: called from WltrAlsoBought::activate() -->
+        <service id="Wltr\AlsoBought\Service\AlsoBoughtIndexer" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Wltr\AlsoBought\Service\AlsoBoughtLoader">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="sales_channel.product.repository"/>
+        </service>
+
+        <service id="Wltr\AlsoBought\Subscriber\StorefrontSubscriber">
+            <argument type="service" id="Wltr\AlsoBought\Service\AlsoBoughtLoader"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Wltr\AlsoBought\ScheduledTask\RebuildAlsoBoughtTask">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="Wltr\AlsoBought\ScheduledTask\RebuildAlsoBoughtTaskHandler">
+            <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="logger"/>
+            <argument type="service" id="Wltr\AlsoBought\Service\AlsoBoughtIndexer"/>
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service id="Wltr\AlsoBought\Command\RebuildAlsoBoughtCommand">
+            <argument type="service" id="Wltr\AlsoBought\Service\AlsoBoughtIndexer"/>
+            <tag name="console.command"/>
+        </service>
+    </services>
+</container>
